@@ -3,6 +3,6 @@ export OMP_NUM_THREADS=3
 gcc -o hello hello_code.c -fopenmp 
 ./hello
 
-Aula 4-
-mpicc aula4.c -o mpi.exe
+Aula 3-
+mpicc aula3.c -o mpi.exe
 mpirun -np 5 mpi.exe

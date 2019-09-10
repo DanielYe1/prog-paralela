@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include "mpi.h"
 
-
 int main(int argc, char** argv) 
 {
 	int meu_rank, np, origem, destino, tag=0;
@@ -27,7 +26,7 @@ int main(int argc, char** argv)
 			MPI_Recv(msg,
 				100,
 				MPI_CHAR,
-				origem,
+				origem, // pode trocar por MPI_ANY_SOURCE e fazer o teste de mudar a ordem
 				tag,
 				MPI_COMM_WORLD,
 				&status);
