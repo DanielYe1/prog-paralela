@@ -18,7 +18,7 @@ int main(int argc, char** argv)
 		MPI_Send(msg,
 			strlen(msg)+1,
 			MPI_CHAR,
-			destino,
+			destino, 
 			tag,
 			MPI_COMM_WORLD);
 	}else{
@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 			MPI_Recv(msg,
 				100,
 				MPI_CHAR,
-				origem, // pode trocar por MPI_ANY_SOURCE e fazer o teste de mudar a ordem
+				MPI_ANY_SOURCE, // pode trocar por MPI_ANY_SOURCE e fazer o teste de mudar a ordem
 				tag,
 				MPI_COMM_WORLD,
 				&status);

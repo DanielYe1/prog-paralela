@@ -6,3 +6,6 @@ gcc -o hello hello_code.c -fopenmp
 Aula 3-
 mpicc aula3.c -o mpi.exe
 mpirun -np 5 mpi.exe
+
+Aula 4-
+mpi cc test -np -fopenmp
