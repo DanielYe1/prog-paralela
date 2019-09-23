@@ -58,8 +58,8 @@ int main(int argc, char** argv){
         }
         
         t = clock() - t; 
-        double time_taken = ((double)t)/CLOCKS_PER_SEC;
-        printf("fun() took %f seconds to execute \n", time_taken);
+        double tempo = ((double)t)/CLOCKS_PER_SEC;
+        printf("gastou %f segundos\n", tempo);
 
         printf("\n");
         for(i = 0; i < N; i++){
