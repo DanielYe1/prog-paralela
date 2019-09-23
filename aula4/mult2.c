@@ -29,7 +29,7 @@ int main(int argc, char** argv){
     MPI_Comm_size(MPI_COMM_WORLD, &np);
 
 
-    for(i = ((N/np)+1)*meu_rank ; i < ((N/np)+1)*(meu_rank+1) && i<N; i++){
+    for(i = meu_rank ; i < N; i+=np){
         for(j = 0; j < N; j++){
             matriz_c[i][j] = 0;
             for(k = 0; k < N; k++){
@@ -41,16 +41,30 @@ int main(int argc, char** argv){
     if(meu_rank != 0){
         sprintf(msg, "Processo %d está calculando!", meu_rank);
         destino = 0;
-        for(i = ((N/np)+1)*meu_rank ; i < ((N/np)+1)*(meu_rank+1) && i<N; i++){
-            MPI_Send(matriz_c[i], sizeof(int)*N + 1, MPI_INT, destino, tag, MPI_COMM_WORLD);
+        for(i = meu_rank ; i < N; i+=np){
+            MPI_Send(matriz_c[i], N + 1, MPI_INT, destino, tag, MPI_COMM_WORLD);
         }
     }else{
         for(origem=1; origem < np; origem++){
-            for(i = ((N/np)+1)*origem ; i < ((N/np)+1)*(origem+1)&& i<N; i++){
-                MPI_Recv(matriz_c[i], sizeof(int)*N + 1, MPI_INT, MPI_ANY_SOURCE, tag, MPI_COMM_WORLD, &status);
+            for(i = meu_rank ; i < N; i+=np){
+                MPI_Recv(matriz_c[i], N + 1, MPI_INT, MPI_ANY_SOURCE, tag, MPI_COMM_WORLD, &status);
             }
         }
         printf("%d",N);
+        for(i = 0; i < N; i++){
+            for(j = 0; j < N; j++){
+                printf("%d ", matriz_a[i][j]);
+            }
+            printf("\n");
+        }
+        printf("\n");
+        for(i = 0; i < N; i++){
+            for(j = 0; j < N; j++){
+                printf("%d ", matriz_b[i][j]);
+            }
+            printf("\n");
+        }
+        printf("\n");
         for(i = 0; i < N; i++){
             for(j = 0; j < N; j++){
                 printf("%d ", matriz_c[i][j]);
@@ -62,6 +76,5 @@ int main(int argc, char** argv){
 
     MPI_Finalize();
 
-    // printf("Teste MPI\n");
     return 0;
 }
