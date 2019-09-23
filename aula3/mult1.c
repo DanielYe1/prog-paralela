@@ -2,10 +2,6 @@
 #include <string.h>
 #include <mpi.h>
 
-// mpicc primeiro_mpi.c -o mpi.exe
-// mpirun --hostfile hostfile -np 10 mpi.exe
-// export OMPI_MCA_btl=self,tcp
-
 int main(int argc, char** argv){
     int meu_rank, np, origem, destino, tag=0;
     char msg[100];
