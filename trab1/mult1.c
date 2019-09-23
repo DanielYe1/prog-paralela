@@ -12,8 +12,6 @@ int main()
 {
 	int i,j,k,N;
 	N = SIZE;
-	#pragma omp parallel private(i,j)
-	#pragma omp for
 	for(i = 0 ; i < SIZE; i++){
 		for(j = 0; j < SIZE; j++) {
 			A[i][j] = 1;
