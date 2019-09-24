@@ -30,15 +30,13 @@ int main(int argc, char** argv){
     MPI_Comm_rank(MPI_COMM_WORLD, &meuRank);
     MPI_Comm_size(MPI_COMM_WORLD, &np);
 
+    #pragma omp parallel shared(a,b,c,N) private(i,j,k)
+    #pragma omp for 
     for(i = meuRank; i < N; i+=np){
-        #pragma omp parallel shared(a,b,c,N) private(i,j,k)
-        #pragma omp for 
-        for(i = 0; i < N; i++){
-            for( j = 0; j < N; j++) {
-                c[i][j] = 0;
-                for (k = 0; k < N ; k++) {
-                    c[i][j] = c[i][j] + a[i][k] * b[k][j];
-                }
+        for( j = 0; j < N; j++) {
+            c[i][j] = 0;
+            for (k = 0; k < N ; k++) {
+                c[i][j] = c[i][j] + a[i][k] * b[k][j];
             }
         }
     }
