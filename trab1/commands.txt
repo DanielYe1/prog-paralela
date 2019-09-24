@@ -1,0 +1,15 @@
+Aula 2-
+export OMP_NUM_THREADS=4
+gcc -o mult1 mult1.c -fopenmp 
+./mult1
+
+Aula 3-
+mpicc mult2.c -o mult2
+mpirun -np 4 mult2
+
+Aula 4-
+export OMP_NUM_THREADS=2
+mpicc mult3.c -o mult3 -fopenmp
+mpirun -np 2 mult3
+
+https://mpitutorial.com/tutorials/mpi-send-and-receive/

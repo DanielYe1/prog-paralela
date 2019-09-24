@@ -8,4 +8,7 @@ mpicc aula3.c -o mpi.exe
 mpirun -np 5 mpi.exe
 
 Aula 4-
-mpi cc test -np -fopenmp
+mpicc test -np -fopenmp
+
+
+https://mpitutorial.com/tutorials/mpi-send-and-receive/
