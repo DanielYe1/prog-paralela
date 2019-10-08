@@ -56,14 +56,6 @@ int main(int argc, char** argv){
         printf("gastou %f segundos\n", tempo);
 
         
-        printf("\n");
-        for(i = 0; i < N; i++){
-            for(j = 0; j < N; j++){
-                printf("%d ", c[i][j]);
-            }
-            printf("\n");
-        }
-        printf("\n");
     }
 
     MPI_Finalize();

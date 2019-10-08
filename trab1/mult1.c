@@ -37,11 +37,4 @@ int main()
     double tempo = ((double)t)/CLOCKS_PER_SEC;
     printf("gastou %f segundos\n", tempo);
 
-	for(i = 0; i < SIZE; i++) {
-		for(j = 0; j < SIZE; j++) {
-			printf("%d ", C[i][j]);
-		}
-		printf("\n");
-	}
-
 }

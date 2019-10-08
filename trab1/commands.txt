@@ -1,11 +1,11 @@
 OMP-
-export OMP_NUM_THREADS=4
+export OMP_NUM_THREADS=2
 gcc -o mult1 mult1.c -fopenmp 
 ./mult1
 
 MPI-
 mpicc mult2.c -o mult2
-mpirun -np 4 mult2
+mpirun -np 2 mult2
 
 OMP e MPI-
 export OMP_NUM_THREADS=2
