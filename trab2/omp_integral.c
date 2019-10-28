@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <omp.h>
+#include <time.h> 
 
 void main(int argc, char** argv) {
     int my_rank;
@@ -16,6 +17,8 @@ void main(int argc, char** argv) {
     int tag=200; // tipo de mensagem (único)
     float calcula(float local_a, float local_b, int local_n, float h);
     int resto;
+        clock_t t; 
+    t = clock(); 
     
     h = (b-a) / num_trap;
     
@@ -32,6 +35,9 @@ void main(int argc, char** argv) {
     //integral *= h;
     total = integral;
     printf("Valor da integral: %f\n", total);
+            t = clock() - t; 
+        double tempo = ((double)t)/CLOCKS_PER_SEC;
+        printf("gastou %f segundos\n", tempo);
 }
 
 

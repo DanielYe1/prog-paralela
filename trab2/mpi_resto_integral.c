@@ -43,15 +43,14 @@ int main(int argc, char ** argv) {
 
     MPI_Reduce(&integral, &total, 1, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
     
-    if (my_rank == 0) 
+    if (my_rank == 0){
+        printf("Resultado : % f\n", total);
         t = clock() - t; 
         double tempo = ((double)t)/CLOCKS_PER_SEC;
         printf("gastou %f segundos\n", tempo);
-        printf("Resultado : % f\n", total);
+    }
     
     MPI_Finalize();
-
-
 }
 
 float calcula(float local_a, float local_b, int local_n, float h) {
