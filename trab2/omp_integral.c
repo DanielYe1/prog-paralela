@@ -2,7 +2,7 @@
 #include <omp.h>
 #include <time.h> 
 
-void main(int argc, char** argv) {
+int main(int argc, char** argv) {
     int my_rank;
     int num_processos; // número de processos
     float a=0.0, b=1.0; // intervalo a calcular
@@ -17,7 +17,7 @@ void main(int argc, char** argv) {
     int tag=200; // tipo de mensagem (único)
     float calcula(float local_a, float local_b, int local_n, float h);
     int resto;
-        clock_t t; 
+    clock_t t; 
     t = clock(); 
     
     h = (b-a) / num_trap;
@@ -27,17 +27,15 @@ void main(int argc, char** argv) {
     #pragma omp parallel for reduction(+:integral)
     for(int i=1; i < num_trap; i++) {
         integral += (i/(double)num_trap)*(i/(double)num_trap);
-        //printf("Integral %f, thread %d\n", integral, omp_get_thread_num());
     }
     integral = integral * 1.0/num_trap;
     integral += 1.0/(2*num_trap);
     
-    //integral *= h;
     total = integral;
     printf("Valor da integral: %f\n", total);
             t = clock() - t; 
-        double tempo = ((double)t)/CLOCKS_PER_SEC;
-        printf("gastou %f segundos\n", tempo);
+    double tempo = ((double)t)/CLOCKS_PER_SEC;
+    printf("gastou %f segundos\n", tempo);
 }
 
 
