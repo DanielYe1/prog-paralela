@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h> 
 
 #define SIZE 10
 int A[SIZE][SIZE], B[SIZE][SIZE], C[SIZE][SIZE], D[SIZE][SIZE], E[SIZE][SIZE], F[SIZE][SIZE], G[SIZE][SIZE], H[SIZE][SIZE];
 int Res[SIZE][SIZE], Res1[SIZE][SIZE], Res2[SIZE][SIZE], Res3[SIZE][SIZE], Res4[SIZE][SIZE];
-int main(int argc, char **argv)
-{
-
+int main(int argc, char **argv){
 	int i, j, k, N;
 	N = SIZE;
-	omp_set_dynamic(0);
-	omp_set_num_threads(4);
+
+    clock_t t; 
+    t = clock(); 
 
 	for (i = 0; i < SIZE; i++)
 	{
@@ -128,4 +128,8 @@ int main(int argc, char **argv)
 		}
 		printf("\n");
 	}
+
+	t = clock() - t; 
+    double tempo = ((double)t)/CLOCKS_PER_SEC;
+    printf("gastou %f segundos\n", tempo);
 }

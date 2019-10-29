@@ -10,7 +10,7 @@ int main(int argc, char ** argv) {
     float h; // base do trapezóide
     float local_a, local_b; // intervalo local
     int local_n; // número de trapezóides local
-    float integral; // integral no meu intervalo
+    double integral; // integral no meu intervalo
     float total; // integral total
     int source; // remetente da integral
     int dest = 0; // destino das integrais (nó 0)
@@ -32,8 +32,7 @@ int main(int argc, char ** argv) {
     if(my_rank < resto){
         local_n++;
         local_a = local_a = a + my_rank * local_n * h;
-    }
-    else{
+    }else{
         local_a = a + (resto * (local_n+1) * h) + (my_rank - resto) * local_n * h;
     }
 
