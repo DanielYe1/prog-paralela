@@ -10,7 +10,7 @@ int main(int argc, char ** argv) {
     float h; // base do trapezóide
     float local_a, local_b; // intervalo local
     int local_n; // número de trapezóides local
-    double integral; // integral no meu intervalo
+    float integral; // integral no meu intervalo
     float total; // integral total
     int source; // remetente da integral
     int dest = 0; // destino das integrais (nó 0)
